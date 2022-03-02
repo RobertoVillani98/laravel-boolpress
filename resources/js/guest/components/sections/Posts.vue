@@ -1,8 +1,8 @@
 <template>
   <section>
-    <h2>Lista Posts</h2>
+    <h2 class="mt-3">Lista Posts</h2>
     <ul>
-      <li v-for="post in posts" :key="post.id">
+      <li class="my-3" v-for="post in posts" :key="post.id">
         <h3>{{ post.title }}</h3>
         <p v-if="post.category">
           <strong>Category:</strong> {{ post.category.name }}
