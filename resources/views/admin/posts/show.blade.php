@@ -45,7 +45,42 @@
                     <strong>Descrizione:</strong>
                      {{ $post->content }}
                 </div>
+
+                @if(count($post->comments) > 0)
+            <div class="container mt-3">
+                <h3>Commenti</h3>
+                <table class="table">
+                    <tbody>
+                        @foreach ($post->comments as $comment)
+                        <tr>
+                            <td>{{$comment->content}}</td>
+                            <td>
+                                @if(!$comment->approved)
+                                <form action="{{route('comments.update', $comment->id)}}" method="POST">
+                                    @csrf
+                                    @method("PATCH")
+                                    <button type="submit" class="btn btn-success">Approva</button>
+                                </form>
+                                @else
+                                Approvato
+                                @endif
+                                
+                            </td>
+                            <td>
+                                <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mx-3" onclick="return confirm('Sei sicuro di voler eliminare il commento?')">Elimina</button>
+                                </form>
+                            </td>
+                          </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
             </div>
+            @endif
+            </div>
+
             
             <div class="d-flex mt-3">
                 <a href="{{route('posts.edit', $post->id)}}"><button type="button" class="btn btn-warning">Modifica</button></a>

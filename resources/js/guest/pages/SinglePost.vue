@@ -6,7 +6,7 @@
       {{ post.content }}
     </p>
     <div>
-      <h3>Comment</h3>
+      <h3>Lascia un commento</h3>
       <form @submit.prevent="addComment()">
         <div>
           <input
@@ -45,6 +45,16 @@
       >
         Commento inviato in fase di approvazione! Grazie
       </div>
+    </div>
+
+    <div>
+      <h3>Commenti</h3>
+      <ul>
+        <li v-for="comment in post.comments" :key="comment.id">
+          <h4>{{ comment.name }}</h4>
+          <p>{{ comment.content }}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
