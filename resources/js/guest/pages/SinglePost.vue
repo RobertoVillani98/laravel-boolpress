@@ -34,7 +34,9 @@
         </div>
 
         <div>
-          <button type="submit">Aggiungi commento</button>
+          <button type="submit" class="btn btn-primary">
+            Aggiungi commento
+          </button>
         </div>
       </form>
       <div
