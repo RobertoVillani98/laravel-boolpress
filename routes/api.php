@@ -18,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//api/posts
 Route::get("/posts", "Api\PostController@index");
 Route::get("/posts/{slug}", "Api\PostController@show");
+
+//api /comments
+Route::post("/comments", "Api\CommentController@store");
