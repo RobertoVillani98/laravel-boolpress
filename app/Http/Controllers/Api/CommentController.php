@@ -44,7 +44,7 @@ class CommentController extends Controller
         $newComment->save();
 
         //invio la notifica email del commento
-        Mail::to("webmaster@boolpress.com")->send(new CommentMail());
+        Mail::to("webmaster@boolpress.com")->send(new CommentMail($newComment->post));
 
         //restituisco una risposta in json ovviamente
 

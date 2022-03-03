@@ -8,6 +8,6 @@ class Comment extends Model
 {
     public function post()
     {
-        return $this->belongsTo("App\Tag");
+        return $this->belongsTo("App\Post");
     }
 }
