@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Comment;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\CommentMail;
+use Illuminate\Support\Facades\Mail;
 
 class CommentController extends Controller
 {
@@ -40,6 +42,9 @@ class CommentController extends Controller
         $newComment->content = $data["content"];
         $newComment->post_id = $data["post_id"];
         $newComment->save();
+
+        //invio la notifica email del commento
+        Mail::to("webmaster@boolpress.com")->send(new CommentMail());
 
         //restituisco una risposta in json ovviamente
 
